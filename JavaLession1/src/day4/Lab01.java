@@ -52,6 +52,10 @@ public class Lab01 {
         System.out.println(" 14. Kiểm tra xem một ArrayList có rỗng hay không.");
         System.out.println(" 15. Viết một phương thức để chèn một phần tử vào một ArrayList tại vị trí xác định.");
         System.out.println(" 16. Tạo một PriorityQueue từ một ArrayList và in ra tất cả các phần tử theo thứ tự ưu tiên.");
+        System.out.println(" 17. Viết một chương trình để kiểm tra xem một ArrayList có chứa tất cả các phần tử của một danh sách khác hay không.");
+        System.out.println(" 18. Sắp xếp một LinkedList chứa các số nguyên theo thứ tự giảm dần.");
+        System.out.println(" 19. Tạo một HashSet từ một mảng và in ra tất cả các phần tử.");
+        System.out.println(" 20. Viết một phương thức để lấy phần tử đầu tiên và phần tử cuối cùng của một ArrayList.");
         System.out.println(" 0. Thoát");
         // Print bottom border
         System.out.print("+");
@@ -204,7 +208,7 @@ public class Lab01 {
                         arr11.add(sc.next());
                     }
                     ArrayList<String> newArrayList = copyArrayList(arr11);
-                    System.out.println("Old ArrayList"+ arr11);
+                    System.out.println("Old ArrayList: "+ arr11);
                     System.out.println("New ArrayList: "+newArrayList);
                     menuFunction();
                     inputFunciton();
@@ -240,11 +244,11 @@ public class Lab01 {
                         System.out.print("ArrayList["+ i+"] = ");
                         arr14.add(sc.next());
                     }
-                    System.out.println("Kiểm tra mảng Array List có empty hay không:");
-                    if(checkEmpty(arr14) == true){
-                        System.out.println("ArrayList rỗng");
+                    System.out.println("Kiểm tra mảng Array List có rỗng hay không:");
+                    if(checkEmpty(arr14)){
+                        System.out.println("ArrayList rỗng ");
                     }else {
-                        System.out.println("ArrayList không rỗng");
+                        System.out.println("ArrayList không rỗng ");
                     }
                     menuFunction();
                     inputFunciton();
@@ -277,6 +281,64 @@ public class Lab01 {
                     menuFunction();
                     inputFunciton();
                 }
+                case "17"->{
+                    ArrayList<Integer> arr17 = new ArrayList<>();
+                    System.out.print("Chọn số phần từ trong ArrayList1 n = ");
+                    int n = sc.nextInt();
+                    for (int i = 0; i < n; i++){
+                        System.out.print("ArrayList1["+ i+"] = ");
+                        arr17.add(sc.nextInt());
+                    }
+                    ArrayList<Integer> arr16 = new ArrayList<>();
+                    System.out.print("Chọn số phần từ trong ArrayList1 n = ");
+                    int c = sc.nextInt();
+                    for (int i = 0; i < c; i++){
+                        System.out.print("ArrayList2["+ i+"] = ");
+                        arr16.add(sc.nextInt());
+                    }
+                    boolean containsAll = containsAllElements(arr17,arr16);
+                    System.out.printf("List1 chứa tất cả các phần tử của List2: " +containsAll);
+                    menuFunction();
+                    inputFunciton();
+                }
+                case "18"->{
+                    LinkedList<Integer> arr18 = new LinkedList<>();
+                    System.out.print("Chọn số phần từ trong ArrayList1 n = ");
+                    int n = sc.nextInt();
+                    for (int i = 0; i < n; i++){
+                        System.out.print("LinkedList["+ i+"] = ");
+                        arr18.add(sc.nextInt());
+                    }
+                    System.out.println("LinkedList trước khi sắp xếp " +arr18);
+                    sortDesc(arr18);
+                    System.out.println("LinkedList sau khi sắp xếp giảm dần " +arr18);
+                    menuFunction();
+                    inputFunciton();
+                }
+                case "19"->{
+                    ArrayList<String> arr19 = new ArrayList<>();
+                    System.out.print("Chọn số phần từ trong ArrayList1 n = ");
+                    int n = sc.nextInt();
+                    for (int i = 0; i < n; i++){
+                        System.out.print("ArrayList["+ i+"] = ");
+                        arr19.add(sc.next());
+                    }
+                    createHashSetFromArr(arr19);
+                    menuFunction();
+                    inputFunciton();
+                }
+                case "20"->{
+                    ArrayList<String> arr20 = new ArrayList<>();
+                    System.out.print("Chọn số phần từ trong ArrayList1 n = ");
+                    int n = sc.nextInt();
+                    for (int i = 0; i < n; i++){
+                        System.out.print("ArrayList["+ i+"] = ");
+                        arr20.add(sc.next());
+                    }
+                    getFirstLastElement(arr20);
+                    menuFunction();
+                    inputFunciton();
+                }
                 default -> {
                     System.out.println("Chọn lại chức năng trong khoảng 0 -> 16");
                     inputFunciton();
@@ -289,16 +351,15 @@ public class Lab01 {
 //  Câu 1
     public static int sumArrayList (ArrayList<Integer> arr){
         int sum = 0;
-        for(int i=0 ;i < arr.size();i++){
-            sum = sum + arr.get(i);
+        for (Integer integer : arr) {
+            sum = sum + integer;
         }
         return sum;
     }
 
 //  Câu 2
     public static HashSet<String> createHashSetFromArrayList(ArrayList<String> arr) {
-        HashSet<String> hashSet01 = new HashSet<>();
-        hashSet01.addAll(arr);
+        HashSet<String> hashSet01 = new HashSet<>(arr);
         System.out.println("HashSet contains:");
         return hashSet01;
     }
@@ -334,7 +395,7 @@ public class Lab01 {
     }
 //   Câu 6 Viết một phương thức để kiểm tra xem một ArrayList có chứa một giá trị cụ thể hay không
     public static void checkArrayList(ArrayList<String> arr,String s){
-        boolean contains = arr.contains(""+s);
+        boolean contains = arr.contains(s);
         System.out.println("Does the list contain '"+s+"' ? "+contains);
 
     }
@@ -346,8 +407,7 @@ public class Lab01 {
     }
 //  Câu 8 Tạo một TreeSet từ một ArrayList và in ra tất cả các phần tử theo thứ tự tăng dần
     public static TreeSet<Integer> createTreeSetFromArrList(ArrayList<Integer> arr){
-        TreeSet<Integer> treeSet01 = new TreeSet<>();
-        treeSet01.addAll(arr);
+        TreeSet<Integer> treeSet01 = new TreeSet<>(arr);
         System.out.println("TreeSet contains");
         return treeSet01;
     }
@@ -362,9 +422,9 @@ public class Lab01 {
 //   Câu 10: Xóa các phần tử trùng lặp từ một ArrayList
     public static ArrayList<String> deletedDoubleElement(ArrayList<String> arr){
         ArrayList<String> result = new ArrayList<>();
-        for (int i = 0;i < arr.size(); i++ ){
-            if(!result.contains(arr.get(i))){
-                result.add(arr.get(i));
+        for (String s : arr) {
+            if (!result.contains(s)) {
+                result.add(s);
             }
         }
         System.out.println("ArrayList sau khi xóa các element trùng lặp: ");
@@ -373,14 +433,13 @@ public class Lab01 {
 
 //  Câu 11  Viết một phương thức để sao chép một ArrayList sang một ArrayList mới.
     public static ArrayList<String> copyArrayList(ArrayList<String> arr){
-        ArrayList<String> newArrayList = new ArrayList<>(arr);
-        return newArrayList;
+        return new ArrayList<>(arr);
     }
 // Câu 12. Tạo một TreeMap chứa các từ và tần suất xuất hiện của chúng trong một đoạn văn bản.
     public static TreeMap<String,Integer> checkWordsThatApper(String str, String s){
         TreeMap<String, Integer> result = new TreeMap<>();
         int count = 0;
-        String[] words =str.split("\s+");
+        String[] words =str.split(" +");
         for (String w: words){
             if(w.contains(s)){
                 count++;
@@ -401,10 +460,7 @@ public class Lab01 {
     }
 //  Câu  14. Kiểm tra xem một ArrayList có rỗng hay không.
     public static boolean checkEmpty(ArrayList<String> arr){
-        if(arr.isEmpty()){
-            return true;
-        }
-        return false;
+        return arr.isEmpty();
     }
 //   Câu 15. Viết một phương thức để chèn một phần tử vào một ArrayList tại vị trí xác định.
     public static ArrayList<String> insertArrayList(ArrayList<String> arr,int index,String str){
@@ -418,6 +474,29 @@ public class Lab01 {
         while (!myQueue.isEmpty()){
             String element = myQueue.poll();
             System.out.print("\t"+element);
+        }
+    }
+//    Câu 17:  Viết một chương trình để kiểm tra xem một ArrayList có chứa tất cả các phần tử của một danh sách khác hay không.
+    public static boolean containsAllElements(List<Integer> list1, List<Integer> list2){
+        return new HashSet<>(list1).containsAll(list2);
+    }
+//    Câu 18:Sắp xếp một LinkedList chứa các số nguyên theo thứ tự giảm dần.
+    public static void sortDesc(LinkedList<Integer> myLinkedList){
+        myLinkedList.sort(Comparator.reverseOrder());
+    }
+
+//    Câu 19: Tạo một HashSet từ một mảng và in ra tất cả các phần tử.
+    public static void createHashSetFromArr(ArrayList<String> arr){
+        HashSet<String> set = new HashSet<>(arr);
+        System.out.println("HashSet Contains: "+set);
+    }
+//    Câu 20: Viết một phương thức để lấy phần tử đầu tiên và phần tử cuối cùng của một ArrayList.
+    public static void getFirstLastElement(ArrayList<String> arr){
+        if(arr.isEmpty()){
+            System.out.println("ArrayList rỗng ");
+        }else {
+            System.out.println("Phân tử đầu tiên là: "+arr.get(0));
+            System.out.println("Phân tử cuối cùng là: "+arr.get(arr.size()-1));
         }
     }
 }
