@@ -302,13 +302,28 @@ public class Lab01 {
                     inputFunciton();
                 }
                 case "18"->{
-                    LinkedList<Integer> arr18 = new LinkedList<>();
+                    LinkedList<String> arr18 = new LinkedList<>();
                     System.out.print("Chọn số phần từ trong ArrayList1 n = ");
                     int n = sc.nextInt();
-                    for (int i = 0; i < n; i++){
-                        System.out.print("LinkedList["+ i+"] = ");
-                        arr18.add(sc.nextInt());
-                    }
+                    boolean isValid;
+                    do {
+                        for (int i = 0; i < n; i++) {
+                            System.out.print("LinkedList[" + i + "] = ");
+                            arr18.add(sc.next());
+                        }
+//                        Kiểm tra list
+                        isValid = true;
+                        for(String element : arr18){
+                            try {
+                                Integer.parseInt(element);
+                            }catch (NumberFormatException e){
+                                System.out.println("Lỗi: List chỉ chứa các số nguyên! ");
+                                arr18.clear();
+                                isValid = false;
+                                break;
+                            }
+                        }
+                        }while (!isValid);
                     System.out.println("LinkedList trước khi sắp xếp " +arr18);
                     sortDesc(arr18);
                     System.out.println("LinkedList sau khi sắp xếp giảm dần " +arr18);
@@ -481,7 +496,7 @@ public class Lab01 {
         return new HashSet<>(list1).containsAll(list2);
     }
 //    Câu 18:Sắp xếp một LinkedList chứa các số nguyên theo thứ tự giảm dần.
-    public static void sortDesc(LinkedList<Integer> myLinkedList){
+    public static void sortDesc(LinkedList<String> myLinkedList){
         myLinkedList.sort(Comparator.reverseOrder());
     }
 
