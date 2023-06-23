@@ -7,14 +7,14 @@ import java.util.List;
 public class Lab08 {
     public static void main(String[] args) {
 //        Câu1
-//        System.out.println("các ký tự trùng nhau: "+Arrays.toString(dedupe("abca")));
-//        System.out.println("các ký tự trùng nhau: "+Arrays.toString(dedupe("abcd")));
-//        System.out.println("các ký tự trùng nhau: "+Arrays.toString(dedupe("abcdac")));
-//        System.out.println("các ký tự trùng nhau: "+Arrays.toString(dedupe("abcde")));
-//        System.out.println("các ký tự trùng nhau: "+Arrays.toString(dedupe("")));
+        System.out.println("các ký tự trùng nhau: "+Arrays.toString(dedupe("abca")));
+        System.out.println("các ký tự trùng nhau: "+Arrays.toString(dedupe("abcd")));
+        System.out.println("các ký tự trùng nhau: "+Arrays.toString(dedupe("abcdac")));
+        System.out.println("các ký tự trùng nhau: "+Arrays.toString(dedupe("abcde")));
+        System.out.println("các ký tự trùng nhau: "+Arrays.toString(dedupe("")));
 
 //        Câu 2
-//        System.out.println(findChar("LOngSonGTA",5));
+        System.out.println(findChar("LOngSonGTA",5));
 
 //        Câu3
         System.out.println(replace("Local Host Server IP is {}", "127.0.0.1"));
@@ -52,7 +52,7 @@ public class Lab08 {
         for (int i = 0; i < charCount.length; i++) {
             if (charCount[i] > 1) {
                 char ch = (char) (i + 'a');
-                testList.add(0, "" + ch);
+                testList.add(0, String.valueOf(ch));
             }
         }
         arr = testList.toArray(new String[0]);
