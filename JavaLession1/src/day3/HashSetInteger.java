@@ -2,17 +2,18 @@ package day3;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class HashSetInteger {
     public static void main(String[] args) {
         System.out.println("\n\nHashSet - Integer");
 
         //Create a HashSet
-        Set<Integer> numbers7 =new HashSet<>();
+        Set<Integer> numbers7 =new TreeSet<>();
 
 //        Add elements to the set
-        numbers7.add(10);
         numbers7.add(20);
+        numbers7.add(10);
         numbers7.add(30);
         numbers7.add(20);
 //        Duplicate elements are igored
