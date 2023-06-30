@@ -13,12 +13,13 @@ public class Manager extends Employee {
 
     @Override
     public double calculateBonus() {
-        return getSalary() * 0.3 ;
+        return getSalary() * 0.5 ;
     }
 
     @Override
     public void display() {
         super.display();
         System.out.println("Phòng ban: "+ getDepartment());
+        System.out.println("Salary: " + (getSalary()+calculateBonus())+"$");
     }
 }

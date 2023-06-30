@@ -21,5 +21,7 @@ public class Engineer extends Employee{
     public void display() {
         super.display();
         System.out.println("Skill: "+getSkill());
+        System.out.println("Salary: " + (getSalary()+calculateBonus())+"$");
+
     }
 }

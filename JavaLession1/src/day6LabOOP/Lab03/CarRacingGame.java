@@ -42,7 +42,7 @@ public class CarRacingGame extends JFrame implements KeyListener {
                 }
 
                 try {
-                    Thread.sleep(0); // Tốc độ cập nhật của trò chơi (milliseconds)
+                    Thread.sleep(5); // Tốc độ cập nhật của trò chơi (milliseconds)
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

@@ -1,6 +1,6 @@
 package day6LabOOP.Lab01;
 
-public class Employee {
+abstract class Employee {
     private String name;
     private double salary;
 
@@ -31,6 +31,5 @@ public class Employee {
 
     public void display(){
         System.out.println("Name: " + getName());
-        System.out.println("Salary: " + getSalary()+"$");
     }
 }
