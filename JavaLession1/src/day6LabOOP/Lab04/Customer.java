@@ -1,23 +1,38 @@
 package day6LabOOP.Lab04;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Customer {
     private String name;
-    private Order order;
+    private List<Order> orders;
+
+    private Cart cart;
 
     public Customer(String name) {
         this.name = name;
-        order = new Order();
+        orders = new ArrayList<Order>();
+        cart =new Cart();
     }
 
     public void addToCart(Product product) {
-        order.addProduct(product);
+        cart.addProductToCart(product);
     }
 
     public void removeFromCart(Product product) {
-        order.removeProduct(product);
+        cart.removeProductToCart(product);
     }
 
-    public double checkout() {
-        return order.getTotalAmount();
+    public void checkout() {
+        Order order = new Order();
+        for(Product product1 : this.cart.products){
+            order.addProduct(product1);
+        }
+        this.orders.add(order);
+
+//        remove item in cart
+        this.cart =new Cart();
+//        Check quantity of store
+
     }
 }

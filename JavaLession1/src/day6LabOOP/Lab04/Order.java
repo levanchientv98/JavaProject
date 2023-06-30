@@ -16,15 +16,15 @@ public class Order {
         productList.add(product);
         totalAmount += product.getPrice();
     }
-
-    public void removeProduct(Product product){
-        productList.remove(product);
-        totalAmount -= product.getPrice();
-    }
-
-    public double getTotalAmount(){
-        return totalAmount;
-    }
+//
+//    public void removeProduct(Product product){
+//        productList.remove(product);
+//        totalAmount -= product.getPrice();
+//    }
+//
+//    public double getTotalAmount(){
+//        return totalAmount;
+//    }
 
     public void printOrder(){
         System.out.println("SuperMarket Bill");
